@@ -13,9 +13,23 @@ function Home(props) {
   }
   
   return (
-    <div className="pt-6 space-y-4">
+    <>
       <Header />
-      <FlightSearchBar/>
+      <div  className="flex justify-center bg-blue-300">
+ 
+      <FlightSearchBar
+        suggestions={[
+          "Toronto, Ontario, Canada",
+          "Sapporo, Japan",
+          "New Orleans, Louisiana",
+          "New Plymouth, New Zealand",
+          "London City Airport",
+          "East London, South Africa",
+          "Bimini, Bahamas",
+          "Cape Town, South Africa"
+        ]}
+      />
+      </div>
       <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
         <div>
           <div className="text-xl font-medium text-black">Current Flights</div>
@@ -26,7 +40,7 @@ function Home(props) {
           </div>
         </div>
       </div>
-    </div>
+      </>
   );
 }
 
