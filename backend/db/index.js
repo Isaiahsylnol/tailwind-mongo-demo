@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose
-    .connect(' ', { useNewUrlParser: true })
+    .connect('', { useNewUrlParser: true })
     .catch(e => {
         console.error('Connection error', e.message)
     })
