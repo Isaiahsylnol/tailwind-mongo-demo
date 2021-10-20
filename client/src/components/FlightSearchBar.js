@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-
+import CloseIcon from '@mui/icons-material/Close';
 class FlightSearchBar extends Component {
   static propTypes = {
-    suggestions: PropTypes.instanceOf(Array)
+    suggestions: PropTypes.instanceOf(Array),
+    placeholer: PropTypes.instanceOf(String)
   };
 
   static defaultProps = {
@@ -29,7 +30,7 @@ class FlightSearchBar extends Component {
     const { suggestions } = this.props;
     const userInput = e.currentTarget.value;
 
-    console.log(userInput);
+    console.log(e.placeholder);
     console.log(suggestions[3].toLowerCase().indexOf(userInput.toLowerCase()))
     // Filter our suggestions that don't contain the user's input
     const filteredSuggestions = suggestions.filter(
@@ -53,6 +54,10 @@ class FlightSearchBar extends Component {
       userInput: e.currentTarget.innerText
     });
   };
+
+   clearInput = () => {
+    this.setState({ userInput: "" });
+  }
 
   // User key press actions
   onKeyDown = (e) => {
@@ -93,7 +98,8 @@ class FlightSearchBar extends Component {
         activeSuggestion,
         filteredSuggestions,
         showSuggestions,
-        userInput
+        userInput,
+        placeholder
       }
     } = this;
 
@@ -112,16 +118,18 @@ class FlightSearchBar extends Component {
               }
 
               return (
-                <li className={className} key={suggestion} onClick={onClick}>
+                <div className="sug">
+                  <li className={className} key={suggestion} onClick={onClick}>
                   {suggestion}
                 </li>
+                </div>
               );
             })}
           </ul>
         );
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
+          <div className="no-suggestions">
             <em>No suggestions, you're on your own!</em>
           </div>
         );
@@ -130,23 +138,25 @@ class FlightSearchBar extends Component {
 
     return (
       <Fragment>
-        <form className="m-4 flex gap-12">
+        <div className="search px-10">
+      <div className="searchInputs">
         <input
-          className="p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
-          placeholder="Origin"
+          className="inputs"
           type="text"
-          onChange={onChange}
-          onKeyDown={onkeydown}
+          placeholder={this.props.placeholder}
           value={userInput}
-        /><input
-        className="p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
-        placeholder="Destination"
-      />
-        <button className="px-8 rounded-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">
-          Search
-        </button>
-      </form><br/>
-        {suggestionsListComponent}
+          onKeyDown={onKeyDown}
+          onChange={onChange}
+        />
+       
+        <div className="clearInput">
+          {filteredSuggestions.length === 0 ? undefined :
+            <CloseIcon  onClick={this.clearInput} />
+          }
+        </div>
+      </div>
+      {suggestionsListComponent}
+    </div>
       </Fragment>
     );
   }

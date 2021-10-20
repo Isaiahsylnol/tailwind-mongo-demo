@@ -37,3 +37,31 @@
   }
 }
 
+.container {
+  height: 200px;
+}
+
+.searchInputs {
+  display: flex; 
+}
+
+.clearInput {
+  height: 40px;
+  width: 50px;
+  background-color: white;
+  display: grid;
+  place-items: center;
+}
+
+.searchIcon svg {
+  font-size: 35px;
+}
+
+.inputs{ 
+  width: 264px;
+}
+
+.sug {
+  background-color: rgb(255, 255, 255);
+}
+ 
