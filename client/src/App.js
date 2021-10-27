@@ -1,8 +1,12 @@
 import "./App.css";
  import axios from 'axios';
 import Home from "./containers/Home.js";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import NavBar from "./components/nav-bar";
+import Footer from "./components/Footer";
+
+ 
 
 function App() {
   const [flights, setflights] = useState('')
@@ -20,16 +24,19 @@ function App() {
  },[]);
 
   return (
-    <Router>
+    <div id="app" className="d-flex flex-column h-100">
+  <NavBar />
+    <div className="container flex-grow-1">
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={(props) => <Home flights={flights}/>}
-        >
+        <Route >
+        <Home flights={flights}/>
+
         </Route>
+       
       </Switch>
-    </Router>
+    </div>
+<Footer />
+  </div>
   );
 }
 

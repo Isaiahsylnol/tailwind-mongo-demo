@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Header from "../components/Header";
 import FlightSearchBar from '../components/FlightSearchBar'
+import Footer from "../components/Footer";
 function Home(props) {
  
   useEffect(() => {
@@ -14,7 +14,7 @@ function Home(props) {
   
   return (
     <div className="">
-      <Header />
+
       <div className="container flex justify-center ">
  
       <FlightSearchBar 
@@ -54,6 +54,7 @@ function Home(props) {
           </div>
         </div>
       </div>
+      <Footer />
       </div>
   );
 }
