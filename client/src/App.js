@@ -4,9 +4,9 @@ import Home from "./containers/Home.js";
 import { Switch, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import NavBar from "./components/nav-bar";
-import Footer from "./components/Footer";
-
- 
+import Footer from "./components/footer";
+import Profile from "./pages/profile";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 function App() {
   const [flights, setflights] = useState('')
@@ -24,16 +24,15 @@ function App() {
  },[]);
 
   return (
-    <div id="app" className="d-flex flex-column h-100">
+    <div id="app" className="d-flex flex-column h-100 justify-center ">
   <NavBar />
-    <div className="container flex-grow-1">
-      <Switch>
-        <Route >
-        <Home flights={flights}/>
-
-        </Route>
-       
-      </Switch>
+    <div className="flex justify-center">
+    <Switch>
+          <Route exact path="/" >
+          <Home flights={flights} />
+          </Route>
+          <ProtectedRoute path="/profile" component={Profile} />
+        </Switch>
     </div>
 <Footer />
   </div>

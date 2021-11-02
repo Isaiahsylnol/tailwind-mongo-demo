@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import FlightSearchBar from '../components/FlightSearchBar'
+import Footer from "../components/Footer";
 
-function Home(props) {
+function HomeContent(props) {
  
   useEffect(() => {
     console.log( props.flights.data)
@@ -13,9 +14,9 @@ function Home(props) {
   }
   
   return (
-    <div className="bg-pink-400 p-11">
+    <div className="">
 
-      <div className="container flex justify-center mb-11">
+      <div className="container flex justify-center ">
  
       <FlightSearchBar 
         placeholder="Origin"
@@ -54,8 +55,10 @@ function Home(props) {
           </div>
         </div>
       </div>
+      <Footer />
       </div>
   );
 }
 
-export default Home;
+
+export default HomeContent;

@@ -36,10 +36,7 @@
     transform: rotate(360deg);
   }
 }
-
-.container {
-  height: 200px;
-}
+ 
 
 .searchInputs {
   display: flex; 
@@ -65,3 +62,9 @@
   background-color: rgb(255, 255, 255);
 }
  
+.nav-link {
+  padding: 12px;
+
+  margin: 13px;
+  background-color: cornsilk;
+}

@@ -1,20 +1,26 @@
-import React from 'react';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Header(props) {
     return (
-        <div>
-            <header>
-                <nav className="container flex items-start py-4 mt-4 sm:mt-12">
-                    <div className="logo"><img src="../assets/air-canada-logo.png" width="100" alt="" /></div>
-                    <ul className="hidden sm:flex flex-1 justify-end items-center gap-12 text-bookmark-blue uppercase">
-                    <li className="cursor-pointer">Home</li>
-                    <li className="cursor-pointer">About</li>
-                    <li className="cursor-pointer">Cotact</li>
-                    <li className="cursor-pointer">Book</li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
+        <div className="p-8 bg-blue-400">
+    <NavLink
+      to="/"
+      exact
+      className="nav-link"
+      activeClassName="router-link-exact-active"
+    >
+      Home
+    </NavLink>
+    <NavLink
+      to="/profile"
+      exact
+      className="nav-link"
+      activeClassName="router-link-exact-active"
+    >
+      Profile
+    </NavLink>
+  </div>
     );
 }
 
